@@ -1,0 +1,59 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "zlanguage",
+    "patterns": [{
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#names"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.zlang",
+                "match": "\\b(let|loop|if|elif|else|func|break|import|export|match|return|def|=>|try|on|settle|raise|importstd)\\b"
+            }]
+        },
+        "strings": {
+            "name": "string.quoted.double.zlang",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.zlang",
+                "match": "\\\\."
+            }]
+        },
+        "numbers": {
+            "patterns": [{
+                "name": "constant.numeric",
+                "match": "-?[\\d_]+(?:\\.[\\d_]+)?(?:e\\-?[\\d_]+)?"
+            }]
+        },
+        "names": {
+            "patterns": [{
+                "name": "meta.definition.variable.name",
+                "match": "[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*"
+            }]
+        },
+        "comments": {
+            "patterns": [{
+                "name": "comment",
+                "match": "#.*"
+            }, {
+                "name": "comment",
+                "match": "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/"
+            }]
+        }
+    },
+    "scopeName": "source.zlang"
+}

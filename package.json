@@ -1,0 +1,25 @@
+{
+    "name": "zlanguage-syntax-highlighting",
+    "displayName": "ZLanguage Syntax Highlighting",
+    "description": "Syntax highlighting for the Z programming language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.36.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "zlanguage",
+            "aliases": ["zlang", "z"],
+            "extensions": [".zlang"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "zlanguage",
+            "scopeName": "source.zlang",
+            "path": "./syntaxes/zlanguage.tmLanguage.json"
+        }]
+    }
+}
