@@ -14,6 +14,12 @@
             "include": "#comments"
         },
         {
+            "include": "#types"
+        },
+        {
+            "include": "#specials"
+        },
+        {
             "include": "#names"
         }
     ],
@@ -21,7 +27,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.zlang",
-                "match": "\\b(let|loop|if|elif|else|func|break|import|export|match|return|def|=>|try|on|settle|raise|importstd)\\b"
+                "match": "(\\b(let|loop|if|elif|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd)\\b)|=>"
             }]
         },
         "strings": {
@@ -45,13 +51,25 @@
                 "match": "[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*"
             }]
         },
+        "types": {
+            "patterns": [{
+                "name": "entity.name.type",
+                "match": "[A-Za-z_+\\-/*%&|?^=<>'!]*[A-Za-z0-9+\\-/*%&|?^<>='!]*!"
+            }]
+        },
         "comments": {
             "patterns": [{
                 "name": "comment",
                 "match": "#.*"
             }, {
                 "name": "comment",
-                "match": "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/"
+                "match": "\\/\\*([^\\u{FFFFFF}]*)\\*\\/"
+            }]
+        },
+        "specials": {
+            "patterns": [{
+                "name": "constant.language",
+                "match": "true|false|undefined|null|NaN|Infinity"
             }]
         }
     },
