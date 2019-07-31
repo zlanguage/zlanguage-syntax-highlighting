@@ -2,7 +2,7 @@
     "name": "zlanguage-syntax-highlighting",
     "displayName": "ZLanguage Syntax Highlighting",
     "description": "Syntax highlighting for the Z programming language",
-    "version": "0.0.2",
+    "version": "0.0.5",
     "publisher": "N8",
     "engines": {
         "vscode": "^1.36.0"

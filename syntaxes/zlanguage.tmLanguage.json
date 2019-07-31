@@ -2,6 +2,9 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "zlanguage",
     "patterns": [{
+            "include": "#specials"
+        },
+        {
             "include": "#keywords"
         },
         {
@@ -17,7 +20,10 @@
             "include": "#types"
         },
         {
-            "include": "#specials"
+            "include": "#dds"
+        },
+        {
+            "include": "#functions"
         },
         {
             "include": "#names"
@@ -27,7 +33,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.zlang",
-                "match": "(\\b(let|loop|if|elif|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd)\\b)|=>"
+                "match": "(\\b(let|loop|if|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd|meta|enter|exit|operator|hoist)\\b)|=>"
             }]
         },
         "strings": {
@@ -42,19 +48,25 @@
         "numbers": {
             "patterns": [{
                 "name": "constant.numeric",
-                "match": "-?[\\d_]+(?:\\.[\\d_]+)?(?:e\\-?[\\d_]+)?"
+                "match": "(?:0[box])?-?\\d[\\d_]*(?:\\.[\\d_]+)?(?:e\\-?[\\d_]+)?[a-z]*"
+            }]
+        },
+        "functions": {
+            "patterns": [{
+                "name": "entity.name.function",
+                "match": "[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*\\s*(?=\\()"
             }]
         },
         "names": {
             "patterns": [{
                 "name": "meta.definition.variable.name",
-                "match": "[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*"
+                "match": "[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z_0-9+\\-/*%&|?^<>='!]*"
             }]
         },
         "types": {
             "patterns": [{
                 "name": "entity.name.type",
-                "match": "[A-Za-z_+\\-/*%&|?^=<>'!]*[A-Za-z0-9+\\-/*%&|?^<>='!]*!"
+                "match": "([A-Za-z_+\\-/*%&|?^=<>'!]*[A-Za-z0-9+\\-/*%&|?^<>='!]*!)|Number|String|BigInt|Math|Date|Object|Function|Boolean|Symbol|Error|EvalError|RangeError|ReferenceError|SyntaxError|TypeError|URIError|Array|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|Uint16Array|Int32Array|Uint32Array|Float32Array|Float64Array|BigInt64Array|BigUint64Array|Map|Set|WeakMap|WeakSet|ArrayBuffer|SharedArrayBuffer|Atomics|DataView|JSON|Promise|Reflect|Proxy|Intl|WebAssembly"
             }]
         },
         "comments": {
@@ -63,13 +75,19 @@
                 "match": "#.*"
             }, {
                 "name": "comment",
-                "match": "\\/\\*([^\\u{FFFFFF}]*)\\*\\/"
+                "match": "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/"
             }]
         },
         "specials": {
             "patterns": [{
                 "name": "constant.language",
-                "match": "true|false|undefined|null|NaN|Infinity"
+                "match": "true|false|undefined|null|NaN|Infinity|globalThis"
+            }]
+        },
+        "dds": {
+            "patterns": [{
+                "name": "meta.preprocessor.string",
+                "match": "\\$((\"(?:[^\"\\\\]|\\\\(?:[nr\"\\\\]|u\\{[0-9A-F]{4,6}\\}))*\")|([A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*))"
             }]
         }
     },
