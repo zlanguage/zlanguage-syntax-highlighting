@@ -33,7 +33,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.zlang",
-                "match": "(\\b(let|loop|if|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd|meta|enter|exit|operator|hoist)\\b)|=>"
+                "match": "(\\b(let|loop|if|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd|meta|enter|exit|operator|hoist|go|get)\\b)|=>|<-"
             }]
         },
         "strings": {
