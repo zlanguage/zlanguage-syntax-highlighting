@@ -26,6 +26,12 @@
             "include": "#functions"
         },
         {
+            "include": "#regexps"
+        },
+        {
+            "include": "#symbols"
+        },
+        {
             "include": "#names"
         }
     ],
@@ -33,7 +39,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.zlang",
-                "match": "(\\b(let|loop|if|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd|meta|enter|exit|operator|hoist|go|get)\\b)|=>|<-"
+                "match": "(\\b(let|loop|if|else|func|break|import|export|match|return|def|try|on|settle|raise|importstd|meta|enter|exit|operator|hoist|go|get|enum|where|derives|static|macro|include|includestd)\\b)|=>|<-"
             }]
         },
         "strings": {
@@ -66,7 +72,7 @@
         "types": {
             "patterns": [{
                 "name": "entity.name.type",
-                "match": "([A-Za-z_+\\-/*%&|?^=<>'!]*[A-Za-z0-9+\\-/*%&|?^<>='!]*!)|Number|String|BigInt|Math|Date|Object|Function|Boolean|Symbol|Error|EvalError|RangeError|ReferenceError|SyntaxError|TypeError|URIError|Array|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|Uint16Array|Int32Array|Uint32Array|Float32Array|Float64Array|BigInt64Array|BigUint64Array|Map|Set|WeakMap|WeakSet|ArrayBuffer|SharedArrayBuffer|Atomics|DataView|JSON|Promise|Reflect|Proxy|Intl|WebAssembly"
+                "match": "([A-Za-z_+\\-/*%&|?^=<>'!]*[A-Za-z0-9+\\-/*%&|?^<>='!]*!)|Number|String|BigInt|Math|Date|Object|Function|Boolean|Symbol|RegExp|Error|EvalError|RangeError|ReferenceError|SyntaxError|TypeError|URIError|Array|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|Uint16Array|Int32Array|Uint32Array|Float32Array|Float64Array|BigInt64Array|BigUint64Array|Map|Set|WeakMap|WeakSet|ArrayBuffer|SharedArrayBuffer|Atomics|DataView|JSON|Promise|Reflect|Proxy|Intl|WebAssembly"
             }]
         },
         "comments": {
@@ -88,6 +94,21 @@
             "patterns": [{
                 "name": "meta.preprocessor.string",
                 "match": "\\$((\"(?:[^\"\\\\]|\\\\(?:[nr\"\\\\]|u\\{[0-9A-F]{4,6}\\}))*\")|([A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z0-9+\\-/*%&|?^<>='!]*))"
+            }]
+        },
+        "regexps": {
+            "patterns": [{
+                "name": "string.regexp",
+                "match": "`.+?`[gimsuy]*"
+            }]
+        },
+        "symbols": {
+            "patterns": [{
+                "name": "storage.type",
+                "match": "@[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z_0-9+\\-/*%&|?^<>='!]*"
+            }, {
+                "name": "storage.type",
+                "match": "@@[A-Za-z_+\\-/*%&|?^=<>'!][A-Za-z_0-9+\\-/*%&|?^<>='!]*"
             }]
         }
     },
